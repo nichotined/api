@@ -24,6 +24,7 @@ class BaseApi:
         self._proxies = None
         self._stream = None
         self._verify = None
+        self._assertion = None
 
     @property
     def url(self) -> str:
@@ -152,3 +153,11 @@ class BaseApi:
     @json.setter
     def json(self, value):
         self._request.json = value
+
+    @property
+    def assertion(self):
+        return self._assertion
+
+    @assertion.setter
+    def assertion(self, value):
+        self._assertion = value
