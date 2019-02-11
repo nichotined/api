@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="api-nichotined",
-    version="0.7.0",
+    version="0.8.1",
     author="Nicholas Frederick",
     author_email="nicholas.frederich.lagaunne@gmail.com",
     description="API package for testing purpose",
@@ -14,9 +14,10 @@ setuptools.setup(
     url="https://github.com/nichotined/api",
     packages=setuptools.find_packages(),
     install_requires=[
-          'requests',
-          'pytest',
-      ],
+        'requests',
+        'pytest',
+        'redis'
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

@@ -1,13 +1,55 @@
 import redis
 
 
-class PyRedis(redis.Redis):
-    def __init__(self, host='localhost', port=6379, db=0, password=None, socket_timeout=None,
-                 socket_connect_timeout=None, socket_keepalive=None, socket_keepalive_options=None,
-                 connection_pool=None, unix_socket_path=None, encoding='utf-8', encoding_errors='strict', charset=None,
-                 errors=None, decode_responses=False, retry_on_timeout=False, ssl=False, ssl_keyfile=None,
-                 ssl_certfile=None, ssl_cert_reqs='required', ssl_ca_certs=None, max_connections=None):
-        super().__init__(host, port, db, password, socket_timeout, socket_connect_timeout, socket_keepalive,
-                         socket_keepalive_options, connection_pool, unix_socket_path, encoding, encoding_errors,
-                         charset, errors, decode_responses, retry_on_timeout, ssl, ssl_keyfile, ssl_certfile,
-                         ssl_cert_reqs, ssl_ca_certs, max_connections)
+class RedisHelper:
+    @staticmethod
+    def delete(host, port, query):
+        r = None
+        try:
+            r = redis.Redis(host=host, port=port)
+            r.delete(query)
+        except Exception as e:
+            raise e
+        finally:
+            if r is not None:
+                r.client_kill("{0}:{1}".format(host, port))
+
+    @staticmethod
+    def get(host, port, query):
+        r = None
+        current_redis_value = "0"
+        try:
+            r = redis.Redis(host=host, port=port)
+            current_redis_value = r.get(query)
+        except Exception as e:
+            raise e
+        finally:
+            if r is not None:
+                r.client_kill("{0}:{1}".format(host, port))
+            return current_redis_value
+
+    @staticmethod
+    def hvals(host, port, query):
+        r = None
+        hvals_list = None
+        try:
+            r = redis.Redis(host=host, port=port)
+            hvals_list = r.hvals(query)
+        except Exception as e:
+            raise e
+        finally:
+            if r is not None:
+                r.client_kill("{0}:{1}".format(host, port))
+            return hvals_list
+
+    @staticmethod
+    def setex(host, port, key, query, ttl):
+        r = None
+        try:
+            r = redis.Redis(host=host, port=port)
+            r.setex(key, ttl, query)
+        except Exception as e:
+            raise e
+        finally:
+            if r is not None:
+                r.client_kill("{0}:{1}".format(host, port))
