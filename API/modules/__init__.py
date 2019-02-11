@@ -4,6 +4,7 @@ from .get import Get
 from .patch import Patch
 from .post import Post
 from .put import Put
+from .py_redis.redis import RedisHelper
 
 __all__ = [
     "BaseApi",
@@ -11,5 +12,6 @@ __all__ = [
     "Get",
     "Put",
     "Delete",
-    "Patch"
+    "Patch",
+    "RedisHelper"
 ]
