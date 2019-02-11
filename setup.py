@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="api-nichotined",
-    version="0.8.1",
+    version="0.8.2",
     author="Nicholas Frederick",
     author_email="nicholas.frederich.lagaunne@gmail.com",
     description="API package for testing purpose",
