@@ -4,7 +4,7 @@ from .get import Get
 from .patch import Patch
 from .post import Post
 from .put import Put
-from .py_redis.redis import RedisHelper
+from .redis_py.redis import RedisHelper
 
 __all__ = [
     "BaseApi",
