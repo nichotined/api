@@ -1,3 +1,6 @@
+from pprint import pprint
+
+import curlify
 import requests
 
 from .baseApi import BaseApi
@@ -15,4 +18,7 @@ class Delete(BaseApi):
                                          allow_redirects=self.allow_redirects, proxies=self.proxies,
                                          hooks=self.hooks, stream=self.stream, verify=self.verify, cert=self.cert,
                                          json=self.json)
-        print(self._response.text)
+        print(' Response '.center(80, '*'))
+        pprint(self._response.text)
+        print(' CURL '.center(80, '*'))
+        pprint(curlify.to_curl(self._response.request))

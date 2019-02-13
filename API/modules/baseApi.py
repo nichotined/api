@@ -156,6 +156,10 @@ class BaseApi:
         self._request.json = value
 
     def logger(self):
-        pprint("Url: {0}".format(self.url))
-        pprint("Header: {0}".format(self.headers))
-        pprint("Body: {0}".format(self.json))
+        print(' Request '.center(80, '*'))
+        print("Url:")
+        pprint(self.url)
+        pprint("Header:")
+        pprint(self.headers)
+        print("Body:")
+        pprint(self.json)

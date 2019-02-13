@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="api-nichotined",
-    version="0.8.5",
+    version="0.8.7",
     author="Nicholas Frederick",
     author_email="nicholas.frederich.lagaunne@gmail.com",
     description="API package for testing purpose",
@@ -16,7 +16,8 @@ setuptools.setup(
     install_requires=[
         'requests',
         'pytest',
-        'redis'
+        'redis',
+        'curlify'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

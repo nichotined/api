@@ -12,7 +12,7 @@ class RedisHelper:
             raise e
         finally:
             if r is not None:
-                r.client_kill("{0}:{1}".format(str(host), int(port)))
+                del r
 
     @staticmethod
     def get(host, port, query):
@@ -25,7 +25,7 @@ class RedisHelper:
             raise e
         finally:
             if r is not None:
-                r.client_kill("{0}:{1}".format(str(host), int(port)))
+                del r
             return current_redis_value
 
     @staticmethod
@@ -39,7 +39,7 @@ class RedisHelper:
             raise e
         finally:
             if r is not None:
-                r.client_kill("{0}:{1}".format(str(host), int(port)))
+                del r
             return hvals_list
 
     @staticmethod
@@ -52,4 +52,4 @@ class RedisHelper:
             raise e
         finally:
             if r is not None:
-                r.client_kill("{0}:{1}".format(str(host), int(port)))
+                del r
