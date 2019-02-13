@@ -1,3 +1,5 @@
+from pprint import pprint
+
 import requests
 
 
@@ -152,3 +154,8 @@ class BaseApi:
     @json.setter
     def json(self, value):
         self._request.json = value
+
+    def logger(self):
+        pprint("Url: {0}".format(self.url))
+        pprint("Header: {0}".format(self.headers))
+        pprint("Body: {0}".format(self.json))
