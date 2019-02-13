@@ -1,5 +1,4 @@
-from pprint import pprint
-
+import curlify
 import requests
 
 
@@ -155,11 +154,18 @@ class BaseApi:
     def json(self, value):
         self._request.json = value
 
-    def logger(self):
+    def logger_request(self):
+        print(' {0} '.format(self.__class__.__name__).center(80, '#'))
         print(' Request '.center(80, '*'))
         print("Url:")
-        pprint(self.url)
-        pprint("Header:")
-        pprint(self.headers)
+        print(self.url)
+        print("Header:")
+        print(self.headers)
         print("Body:")
-        pprint(self.json)
+        print(self.json)
+
+    def logger_response(self):
+        print(' Response '.center(80, '*'))
+        print(self._response.text)
+        print(' CURL '.center(80, '*'))
+        print(curlify.to_curl(self._response.request))

@@ -1,6 +1,3 @@
-from pprint import pprint
-
-import curlify
 import requests
 
 from .baseApi import BaseApi
@@ -11,14 +8,11 @@ class Patch(BaseApi):
         super().__init__()
 
     def execute(self):
-        self.logger()
+        self.logger_request()
         self._response = requests.patch(url=self.url,
                                         params=self.params, data=self.data, headers=self.headers, cookies=self.cookies,
                                         files=self.files, auth=self.auth, timeout=self.timeout,
                                         allow_redirects=self.allow_redirects, proxies=self.proxies,
                                         hooks=self.hooks, stream=self.stream, verify=self.verify, cert=self.cert,
                                         json=self.json)
-        print(' Response '.center(80, '*'))
-        pprint(self._response.text)
-        print(' CURL '.center(80, '*'))
-        pprint(curlify.to_curl(self._response.request))
+        self.logger_response()
