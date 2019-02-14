@@ -1,3 +1,5 @@
+import json
+
 import curlify
 import requests
 
@@ -155,17 +157,26 @@ class BaseApi:
         self._request.json = value
 
     def logger_request(self):
-        print(' {0} '.format(self.__class__.__name__).center(80, '#'))
-        print(' Request '.center(80, '*'))
-        print("Url:")
-        print(self.url)
-        print("Header:")
+        print(' {0} Request '.format(self.__class__.__name__).center(80, '#'))
+        print("Url: ".format(self.url))
+        print("Headers:")
         print(self.headers)
         print("Body:")
         print(self.json)
+        print(self._request.method)
+        print()
 
     def logger_response(self):
-        print(' Response '.center(80, '*'))
-        print(self._response.text)
+        print(" {0} Response ".format(self.__class__.__name__).center(80, '#'))
+        print("Status Code: ".format(self._response.status_code))
+        print("Body: ")
+        try:
+            body = self._response.text
+            parsed = json.loads(body)
+            print(json.dumps(parsed, indent=4, sort_keys=True))
+        except Exception:
+            print(self._response.text)
+
         print(' CURL '.center(80, '*'))
         print(curlify.to_curl(self._response.request))
+        print()
