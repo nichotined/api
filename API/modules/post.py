@@ -9,6 +9,7 @@ class Post(BaseApi):
         super().__init__()
 
     def execute(self):
+        self._method_name = "POST"
         self.logger_request()
         self._response = requests.post(url=self.url,
                                        params=self.params, data=self.data, headers=self.headers, cookies=self.cookies,

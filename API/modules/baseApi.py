@@ -175,30 +175,32 @@ class BaseApi:
         self._json_object = value
 
     def logger_request(self):
-        print(' {0} Request '.format(self.__class__.__name__).center(80, '#'))
-        print("Url: {0} {1}".format(self.method_name, self.url))
+        print()
+        print(' {0} REQUEST '.format(self.__class__.__name__).center(80, '#'))
+        print("URL: {0} {1}".format(self.method_name, self.url))
 
         print("Headers:")
-        parsed_header = json.loads(self.headers)
-        print(json.dumps(parsed_header, indent=4, sort_keys=True))
+        print(json.dumps(self.headers, indent=4, sort_keys=True))
 
         print("Body:")
-        parsed_body = json.loads(self.json)
-        print(json.dumps(parsed_body, indent=4, sort_keys=True))
+        print(json.dumps(self.json, indent=4, sort_keys=True))
 
         print()
 
     def logger_response(self):
-        print(" {0} Response ".format(self.__class__.__name__).center(80, '#'))
-        print("Status Code: {0}".format(self._response.status_code))
+        print(" {0} RESPONSE ".format(self.__class__.__name__).center(80, '#'))
+        print("HTTP Status Code: {0}".format(self._response.status_code))
 
         print("Body: ")
         try:
-            body = self._response.text
-            parsed = json.loads(body)
+            parsed = json.loads(self._response.text)
             print(json.dumps(parsed, indent=4, sort_keys=True))
         except Exception:
             print(self._response.text)
-
-        print("CURL: {0}".format(curlify.to_curl(self._response.request)))
+        print()
+        print("CURL:")
+        clear_header_str = " -H 'Accept: */*' -H 'Accept-Encoding: gzip, deflate' -H 'Connection: keep-alive' -H 'Content-Length: 24' -H 'Content-Type: application/json' -H 'User-Agent: python-requests/2.21.0'"
+        cleared_curl = curlify.to_curl(self._response.request).replace(clear_header_str, "")
+        print(cleared_curl)
+        print(" END".center(80, '#'))
         print()
