@@ -17,7 +17,5 @@ class Get(BaseApi):
                                       hooks=self.hooks, stream=self.stream, verify=self.verify, cert=self.cert,
                                       json=self.json)
         self.logger_response()
-        try:
+        if self._response:
             self._json_object = PyJSON(self._response.json())
-        except Exception:
-            pass
