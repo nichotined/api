@@ -1,5 +1,6 @@
 import requests
 
+from API.modules.json.pyJson import PyJSON
 from .baseApi import BaseApi
 
 
@@ -16,3 +17,7 @@ class Get(BaseApi):
                                       hooks=self.hooks, stream=self.stream, verify=self.verify, cert=self.cert,
                                       json=self.json)
         self.logger_response()
+        try:
+            self._json_object = PyJSON(self._response.json())
+        except Exception:
+            pass

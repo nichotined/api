@@ -27,6 +27,8 @@ class BaseApi:
         self._proxies = None
         self._stream = None
         self._verify = None
+        self._method_name = None
+        self._json_object = None
 
     @property
     def url(self) -> str:
@@ -156,19 +158,40 @@ class BaseApi:
     def json(self, value):
         self._request.json = value
 
+    @property
+    def method_name(self):
+        return self._method_name
+
+    @method_name.setter
+    def method_name(self, value):
+        self._method_name = value
+
+    @property
+    def json_object(self):
+        return self._json_object
+
+    @json_object.setter
+    def json_object(self, value):
+        self._json_object = value
+
     def logger_request(self):
         print(' {0} Request '.format(self.__class__.__name__).center(80, '#'))
-        print("Url: ".format(self.url))
+        print("Url: {0} {1}".format(self.method_name, self.url))
+
         print("Headers:")
-        print(self.headers)
+        parsed_header = json.loads(self.headers)
+        print(json.dumps(parsed_header, indent=4, sort_keys=True))
+
         print("Body:")
-        print(self.json)
-        print(self._request.method)
+        parsed_body = json.loads(self.json)
+        print(json.dumps(parsed_body, indent=4, sort_keys=True))
+
         print()
 
     def logger_response(self):
         print(" {0} Response ".format(self.__class__.__name__).center(80, '#'))
-        print("Status Code: ".format(self._response.status_code))
+        print("Status Code: {0}".format(self._response.status_code))
+
         print("Body: ")
         try:
             body = self._response.text
@@ -177,6 +200,5 @@ class BaseApi:
         except Exception:
             print(self._response.text)
 
-        print(' CURL '.center(80, '*'))
-        print(curlify.to_curl(self._response.request))
+        print("CURL: {0}".format(curlify.to_curl(self._response.request)))
         print()
