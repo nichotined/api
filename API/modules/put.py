@@ -1,3 +1,5 @@
+import json
+
 import requests
 
 from API.modules.json.pyJson import PyJSON
@@ -19,4 +21,4 @@ class Put(BaseApi):
                                       json=self.json)
         self.logger_response()
         if self._response:
-            self._json_object = PyJSON(self._response.json())
+            self._json_object = "#NoBody on PUT response"
