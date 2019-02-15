@@ -8,7 +8,7 @@ class RedisHelper:
         current_redis_value = None
         try:
             r = redis.Redis(host=str(host), port=int(port))
-            r.delete(query)
+            current_redis_value = r.delete(query)
         except Exception as e:
             raise e
         finally:
