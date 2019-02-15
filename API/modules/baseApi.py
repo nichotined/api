@@ -199,8 +199,6 @@ class BaseApi:
             print(self._response.text)
         print()
         print("CURL:")
-        clear_header_str = " -H 'Accept: */*' -H 'Accept-Encoding: gzip, deflate' -H 'Connection: keep-alive' -H 'Content-Length: 24' -H 'Content-Type: application/json' -H 'User-Agent: python-requests/2.21.0'"
-        cleared_curl = curlify.to_curl(self._response.request).replace(clear_header_str, "")
-        print(cleared_curl)
+        print(curlify.to_curl(self._response.request))
         print(" END".center(80, '#'))
         print()

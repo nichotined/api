@@ -5,6 +5,7 @@ class RedisHelper:
     @staticmethod
     def delete(host, port, query):
         r = None
+        current_redis_value = None
         try:
             r = redis.Redis(host=str(host), port=int(port))
             r.delete(query)
@@ -13,11 +14,12 @@ class RedisHelper:
         finally:
             if r is not None:
                 del r
+            return current_redis_value
 
     @staticmethod
     def get(host, port, query):
         r = None
-        current_redis_value = "0"
+        current_redis_value = None
         try:
             r = redis.Redis(host=str(host), port=int(port))
             current_redis_value = r.get(query)
