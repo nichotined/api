@@ -200,5 +200,5 @@ class BaseApi:
         print()
         print("CURL:")
         print(curlify.to_curl(self._response.request))
-        print(" END".center(80, '#'))
+        print(" END ".center(80, '#'))
         print()
