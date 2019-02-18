@@ -21,7 +21,7 @@ class BaseApi:
     def __init__(self):
         self._response = Response()
         self._request = Request()
-        self._timeout = None
+        self._timeout = 30
         self._allow_redirects = None
         self._cert = None
         self._proxies = None
