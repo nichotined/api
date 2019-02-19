@@ -10,9 +10,9 @@ class Get(BaseApi):
     def __init__(self):
         super().__init__()
         self._method_name = "GET"
-        self.logger_request()
 
     def execute(self):
+        self.logger_request()
         self._response = requests.get(url=self.url,
                                       params=self.params, data=self.data, headers=self.headers, cookies=self.cookies,
                                       files=self.files, auth=self.auth,
