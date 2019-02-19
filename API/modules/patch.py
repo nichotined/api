@@ -9,8 +9,6 @@ from .baseApi import BaseApi
 class Patch(BaseApi):
     def __init__(self):
         super().__init__()
-
-    def execute(self):
         self._method_name = "PATCH"
         self.logger_request()
         self._response = requests.patch(url=self.url,

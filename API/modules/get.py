@@ -9,8 +9,6 @@ from .baseApi import BaseApi
 class Get(BaseApi):
     def __init__(self):
         super().__init__()
-
-    def execute(self):
         self._method_name = "GET"
         self.logger_request()
         self._response = requests.get(url=self.url,

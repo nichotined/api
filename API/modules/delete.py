@@ -9,8 +9,6 @@ from .baseApi import BaseApi
 class Delete(BaseApi):
     def __init__(self):
         super().__init__()
-
-    def execute(self):
         self._method_name = "DELETE"
         self.logger_request()
         self._response = requests.delete(url=self.url,
