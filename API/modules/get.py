@@ -11,9 +11,12 @@ class Get(BaseApi):
         super().__init__()
         self._method_name = "GET"
         self.logger_request()
+
+    def execute(self):
         self._response = requests.get(url=self.url,
                                       params=self.params, data=self.data, headers=self.headers, cookies=self.cookies,
-                                      files=self.files, auth=self.auth, timeout=30 if self.timeout is None else self.timeout,
+                                      files=self.files, auth=self.auth,
+                                      timeout=30 if self.timeout is None else self.timeout,
                                       allow_redirects=self.allow_redirects, proxies=self.proxies,
                                       hooks=self.hooks, stream=self.stream, verify=self.verify, cert=self.cert,
                                       json=self.json)

@@ -8,6 +8,8 @@ class Put(BaseApi):
         super().__init__()
         self._method_name = "PUT"
         self.logger_request()
+
+    def execute(self):
         self._response = requests.put(url=self.url,
                                       params=self.params, data=self.data, headers=self.headers, cookies=self.cookies,
                                       files=self.files, auth=self.auth,
