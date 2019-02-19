@@ -1,8 +1,5 @@
-import json
-
 import requests
 
-from API.modules.json.pyJson import PyJSON
 from .baseApi import BaseApi
 
 
@@ -15,7 +12,8 @@ class Put(BaseApi):
         self.logger_request()
         self._response = requests.put(url=self.url,
                                       params=self.params, data=self.data, headers=self.headers, cookies=self.cookies,
-                                      files=self.files, auth=self.auth, timeout=self.timeout,
+                                      files=self.files, auth=self.auth,
+                                      timeout=30 if self.timeout is None else self.timeout,
                                       allow_redirects=self.allow_redirects, proxies=self.proxies,
                                       hooks=self.hooks, stream=self.stream, verify=self.verify, cert=self.cert,
                                       json=self.json)
