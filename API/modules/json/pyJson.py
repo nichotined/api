@@ -10,10 +10,11 @@ class PyJSON(object):
 
     def from_dict(self, d):
         self.__dict__ = {}
-        for key, value in d.items():
-            if type(value) is dict:
-                value = PyJSON(value)
-            self.__dict__[key] = value
+        if type(d) is dict:
+            for key, value in d.items():
+                if type(value) is dict:
+                    value = PyJSON(value)
+                self.__dict__[key] = value
 
     def to_dict(self):
         d = {}
