@@ -22,6 +22,11 @@ class Get(BaseApi):
                                       json=self.json)
         self.logger_response()
         try:
-            self._json_object = PyJSON(self._response.json())
+            response_text = str(self._response.text)
+            if response_text[0:2] == "[{" and response_text[-2:] == "}]":
+                response_text = '{ "data": [' + response_text[1:-1] + "]}"
+                self._json_object = PyJSON(json.loads(response_text))
+            else:
+                self._json_object = PyJSON(self._response.json())
         except json.decoder.JSONDecodeError:
-            self._json_object = "#NoBody on this GET response"
+            self._json_object = "#Failed to parse json object in this GET response"
