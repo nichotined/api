@@ -188,6 +188,9 @@ class BaseApi:
         print()
 
     def logger_response(self):
+        print("CURL:")
+        print(curlify.to_curl(self._response.request))
+
         print(" {0} RESPONSE ".format(self.__class__.__name__).center(80, '#'))
         print("HTTP Status Code: {0}".format(self._response.status_code))
 
@@ -195,10 +198,8 @@ class BaseApi:
         try:
             parsed = json.loads(self._response.text)
             print(json.dumps(parsed, indent=4, sort_keys=True))
-        except Exception:
-            print(self._response.text)
+        except Exception as e:
+            print(e, self._response.text)
         print()
-        print("CURL:")
-        print(curlify.to_curl(self._response.request))
         print(" END ".center(80, '#'))
         print()
