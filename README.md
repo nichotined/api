@@ -1,11 +1,7 @@
 # API
 
-This package is used for REST API classbased that's easy to be implemented and called.
-
-This python package for API testing.  
-Extending python requests library https://github.com/requests/requests/  
-
-https://pypi.org/project/api-nichotined/
+This package is used for REST API classbased that's easy to be implemented and called especially for API flow testing.
+> This package is extending python requests library https://github.com/requests/requests/  
 
 How to install 
 ```
