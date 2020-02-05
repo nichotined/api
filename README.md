@@ -1,5 +1,7 @@
 # API
 
+This package is used for REST API classbased that's easy to be implemented and called.
+
 This python package for API testing.  
 Extending python requests library https://github.com/requests/requests/  
 
@@ -33,6 +35,6 @@ class RegionByLatLong(Get):
         }
         self.execute()
         
-response = RegionByLatLong()
+response = RegionByLatLong('106', '80')
 print(response)
 ```
