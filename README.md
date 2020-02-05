@@ -1,7 +1,7 @@
 # API
 
 This python package for API testing.
-Uses requests package
+Extending python requests library
 https://github.com/requests/requests/
 
 ```
