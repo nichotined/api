@@ -1,9 +1,16 @@
 # API
 
-This python package for API testing.
-Extending python requests library
-https://github.com/requests/requests/
+This python package for API testing.  
+Extending python requests library https://github.com/requests/requests/  
 
+https://pypi.org/project/api-nichotined/
+
+How to install 
+```
+$ pip3 install api-nichotined
+```
+
+How to distribute to pypi
 ```
 $ python3 setup.py sdist bdist_wheel
 $ python3 -m twine upload dist/*
