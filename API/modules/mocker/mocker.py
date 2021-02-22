@@ -21,15 +21,14 @@ class Events:
                 headers=self.mock_data.content_type
             )
 
-
-j = """
-{
-"key":"value"
-}
-"""
-
-mr = MockResponse("https://google.com", 200, j, "application/json")
-
-addons = [
-    Events(mr)
-]
+# j = """
+# {
+# "key":"value"
+# }
+# """
+#
+# mr = MockResponse("https://google.com", 200, j, "application/json")
+#
+# addons = [
+#     Events(mr)
+# ]
