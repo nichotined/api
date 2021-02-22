@@ -53,3 +53,9 @@ if __name__ == "__main__":
     assert get_data.address_name == "somewhere"
     assert post_data.status_code == 200
 ```
+
+Mocker usage  
+Beforehand, edit or extend `mocker.py` and add your desired response on that file. 
+```
+$ mitmproxy -p 8888 -s API/modules/mocker/mocker.py
+```
