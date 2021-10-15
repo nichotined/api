@@ -8,7 +8,7 @@ verify_ssl = true
 [packages]
 api-nichotined = {editable = true,path = "."}
 curlify = "==2.2.1"
-mitmproxy = "*"
+mitmproxy => "7"
 
 [requires]
 python_version = "3.9"
