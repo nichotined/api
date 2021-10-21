@@ -39,11 +39,11 @@ class BaseApi:
         self._request.url = value
 
     @property
-    def headers(self) -> {}:
+    def headers(self) -> Dict[T1, T2]:
         return self._request.headers
 
     @headers.setter
-    def headers(self, value: {}):
+    def headers(self, value: Dict[T1, T2]):
         self._request.headers = value
 
     @property
@@ -55,19 +55,19 @@ class BaseApi:
         self._response = value
 
     @property
-    def params(self) -> {}:
+    def params(self) -> Dict[T1, T2]:
         return self._request.params
 
     @params.setter
-    def params(self, value: {}):
+    def params(self, value: Dict[T1, T2]):
         self._request.params = value
 
     @property
-    def data(self) -> []:
+    def data(self) -> List[T]:
         return self._request.data
 
     @data.setter
-    def data(self, value: []):
+    def data(self, value: List[T]):
         self._request.data = value
 
     @property
